@@ -1,0 +1,619 @@
+{
+	"info": {
+		"_postman_id": "7aa0dd02-02f9-4897-b469-00fd34c9a470",
+		"name": "Ticto-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11163004"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"pm.collectionVariables.set(\"TOKEN\", jsonData.data.access_token);",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Company",
+								"value": "{{COMPANY_UUID}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"gestor1@example.com\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_LOCAL}}/auth/login",
+							"host": [
+								"{{URL_LOCAL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Company",
+								"value": "{{COMPANY_UUID}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"current_password\": \"password\",\n    \"new_password\": \"password1\",\n    \"new_password_confirmation\": \"password1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_LOCAL}}/auth/change-password",
+							"host": [
+								"{{URL_LOCAL}}"
+							],
+							"path": [
+								"auth",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_LOCAL}}/user-info",
+							"host": [
+								"{{URL_LOCAL}}"
+							],
+							"path": [
+								"user-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"João Silva\",\r\n    \"email\": \"joao.silva@example.com\",\r\n    \"password\": \"password123\",\r\n    \"password_confirmation\": \"password123\",\r\n    \"birthdate\": \"1990-01-01\",\r\n    \"document\": \"48743485057\",\r\n    \"address\": {\r\n        \"zip_code\": \"12345678\",\r\n        \"street\": \"Rua das Flores\",\r\n        \"complement\": \"Apto 101\",\r\n        \"neighborhood\": \"Centro\",\r\n        \"city\": \"São Paulo\",\r\n        \"state\": \"SP\",\r\n        \"unit\": \"Bloco B\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_LOCAL}}/user",
+							"host": [
+								"{{URL_LOCAL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_LOCAL}}/user",
+							"host": [
+								"{{URL_LOCAL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Destroy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL_LOCAL}}/user/:id",
+							"host": [
+								"{{URL_LOCAL}}"
+							],
+							"path": [
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <seu_token_jwt>"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"birthdate\": \"1990-01-01\",\r\n    \"document\": \"20092143075\",\r\n    \"address\": {\r\n        \"zip_code\": \"12345678\",\r\n        \"street\": \"Rua das Flores Atualizada\",\r\n        \"complement\": \"Apto 101\",\r\n        \"neighborhood\": \"Centro\",\r\n        \"city\": \"São Paulo\",\r\n        \"state\": \"SP\",\r\n        \"unit\": \"Bloco B\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_LOCAL}}/user/:id",
+							"host": [
+								"{{URL_LOCAL}}"
+							],
+							"path": [
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --location --request PUT 'http://localhost:8000/api/user/1' \\\r\n--header 'Authorization: Bearer <seu_token_jwt>' \\\r\n--header 'Content-Type: application/json' \\\r\n--data-raw '{\r\n    \"name\": \"João Silva Atualizado\",\r\n    \"email\": \"joao.silva.atualizado@example.com\",\r\n    \"password\": \"novaSenha123\",\r\n    \"password_confirmation\": \"novaSenha123\",\r\n    \"birthdate\": \"1990-01-01\",\r\n    \"document\": \"12345678901\",\r\n    \"role_id\": 2,\r\n    \"manager_id\": null, \r\n    \"address\": {\r\n        \"zip_code\": \"12345678\",\r\n        \"street\": \"Rua das Flores Atualizada\",\r\n        \"complement\": \"Apto 101\",\r\n        \"neighborhood\": \"Centro\",\r\n        \"city\": \"São Paulo\",\r\n        \"state\": \"SP\",\r\n        \"unit\": \"Bloco B\"\r\n    }\r\n}'\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_LOCAL}}/user/:id",
+							"host": [
+								"{{URL_LOCAL}}"
+							],
+							"path": [
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CheckIn",
+			"item": [
+				{
+					"name": "Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL_LOCAL}}/check-in",
+							"host": [
+								"{{URL_LOCAL}}"
+							],
+							"path": [
+								"check-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_LOCAL}}/check-in?start_date=2024-10-23&end_date=2024-10-27&page=1&per_page=10",
+							"host": [
+								"{{URL_LOCAL}}"
+							],
+							"path": [
+								"check-in"
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": "2024-10-23"
+								},
+								{
+									"key": "end_date",
+									"value": "2024-10-27"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Index Today",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_LOCAL}}/check-in/today",
+							"host": [
+								"{{URL_LOCAL}}"
+							],
+							"path": [
+								"check-in",
+								"today"
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": "2024-10-23",
+									"disabled": true
+								},
+								{
+									"key": "end_date",
+									"value": "2024-10-27",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ZipCode Service",
+			"item": [
+				{
+					"name": "Find",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_LOCAL}}/address/44200000",
+							"host": [
+								"{{URL_LOCAL}}"
+							],
+							"path": [
+								"address",
+								"44200000"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Health",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL_LOCAL}}/health-check",
+					"host": [
+						"{{URL_LOCAL}}"
+					],
+					"path": [
+						"health-check"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Health",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_LOCAL}}/health-check",
+							"host": [
+								"{{URL_LOCAL}}"
+							],
+							"path": [
+								"health-check"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.27.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.9"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 Jul 2024 01:27:58 GMT"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"health\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.headers.add({\r",
+					"    key : \"Accept\",\r",
+					"    value : \"application/json\"\r",
+					"});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL_LOCAL",
+			"value": "http://localhost:8000/api",
+			"type": "default"
+		},
+		{
+			"key": "TOKEN",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

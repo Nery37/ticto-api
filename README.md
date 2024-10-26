@@ -23,7 +23,7 @@ Para facilitar os testes e integração com a API, uma collection do Postman est
   
   ```
   make install
-```
+  ```
 
 ## Frontend do Projeto
 

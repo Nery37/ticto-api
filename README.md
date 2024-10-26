@@ -47,7 +47,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `password`   | string | Sim         | Senha do usuário.   |
 
 #### Exemplo de Resposta:
-```
+```json
 {
     "data": {
         "access_token": "jwt_token_aqui",
@@ -75,7 +75,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `new_password_confirmation` | string | Sim | Confirmação da nova senha.     |
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "message": "Senha alterada com sucesso."
 }
@@ -238,7 +238,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `state`        | string | Não         | Estado do endereço.     |
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "data": {
     "id": 1,
@@ -275,7 +275,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `id`      | int  | Sim         | ID do usuário a ser exibido.|
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "data": {
     "id": 1,
@@ -310,7 +310,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `Authorization` | Bearer {token}   |
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "data": {
     "id": 1,
@@ -345,7 +345,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `Authorization` | Bearer {token}   |
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "data": {
     "check_in_id": 123,
@@ -379,7 +379,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `per_page`    | int    | Não         | Registros por página.        |
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "data": [
     {
@@ -409,7 +409,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `Authorization` | Bearer {token}   |
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "data": [
   	{
@@ -450,7 +450,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `zipCode`     | string | Sim         | CEP do endereço a ser buscado. |
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "data": {
     "cep": "01001-000",
@@ -470,7 +470,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 - **Descrição:** Verifica o status da API para garantir que está funcionando corretamente.
 
 #### Exemplo de Resposta:
-```
+```json
 {
     "status": "health"
 }

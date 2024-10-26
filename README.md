@@ -93,7 +93,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `Authorization` | Bearer {token}   |
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "data": [
     {

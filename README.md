@@ -27,12 +27,20 @@ Para facilitar os testes e integração com a API, uma collection do Postman est
 
 ## Credenciais de Acesso
 
-### Login do Gestor
+### Login do Gestor 1
 - **E-mail**: gestor1@example.com
 - **Senha**: password
 
-### Login do Funcionário
+### Login do Funcionário (Vinculado ao gestor 1)
 - **E-mail**: funcionario1@example.com
+- **Senha**: password
+
+### Login do Gestor 2
+- **E-mail**: gestor2@example.com
+- **Senha**: password
+
+### Login do Funcionário (Vinculado ao gestor 2)
+- **E-mail**: funcionario2@example.com
 - **Senha**: password
 
 > **Observação**: O gestor pode acessar funcionalidades avançadas, como monitoramento dos registros de ponto dos subordinados, enquanto o funcionário visualiza e gerencia o próprio registro.

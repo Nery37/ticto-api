@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
         $manager = User::create([
             'name' => 'Gestor 1',
-            'document' => '86485748032',
+            'document' => '42250449040',
             'email' => 'gestor1@example.com',
             'password' => Hash::make('password'),
             'birthdate' => '1980-01-01',
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
 
         $managerSecond = User::create([
             'name' => 'Gestor 2',
-            'document' => '77895134000',
+            'document' => '85841692020',
             'email' => 'gestor2@example.com',
             'password' => Hash::make('password'),
             'birthdate' => '1980-01-01',
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Funcionario 1',
-            'document' => '01871772010',
+            'document' => '67463581004',
             'email' => 'funcionario1@example.com',
             'password' => Hash::make('password'),
             'birthdate' => '1990-01-01',
@@ -47,7 +47,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Funcionario 2',
-            'document' => '15133014031',
+            'document' => '48412912020',
             'email' => 'funcionario2@example.com',
             'password' => Hash::make('password'),
             'birthdate' => '1991-01-01',
@@ -58,7 +58,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Funcionario 3',
-            'document' => '62347812001',
+            'document' => '77920922089',
             'email' => 'funcionario3@example.com',
             'password' => Hash::make('password'),
             'birthdate' => '1992-01-01',
@@ -69,7 +69,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'Funcionario 4',
-            'document' => '94285712367',
+            'document' => '18674613071',
             'email' => 'funcionario4@example.com',
             'password' => Hash::make('password'),
             'birthdate' => '1993-01-01',

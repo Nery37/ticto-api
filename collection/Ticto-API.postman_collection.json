@@ -198,12 +198,22 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL_LOCAL}}/user",
+							"raw": "{{URL_LOCAL}}/user?page=1&per_page=10",
 							"host": [
 								"{{URL_LOCAL}}"
 							],
 							"path": [
 								"user"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
 							]
 						}
 					},
@@ -437,18 +447,6 @@
 							"path": [
 								"check-in",
 								"today"
-							],
-							"query": [
-								{
-									"key": "start_date",
-									"value": "2024-10-23",
-									"disabled": true
-								},
-								{
-									"key": "end_date",
-									"value": "2024-10-27",
-									"disabled": true
-								}
 							]
 						}
 					},

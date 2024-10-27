@@ -48,7 +48,7 @@ class UserCheckInRepositoryEloquent extends Repository implements UserCheckInRep
         if ($startDate && $endDate) {
             $totalQuery .= " AND uci.created_at BETWEEN :start_date AND :end_date";
             $bindings['start_date'] = $startDate;
-            $bindings['end_date'] = $endDate;
+            $bindings['end_date'] = $endDate . ' 23:59:59';
         }
         $totalRecords = DB::selectOne($totalQuery, $bindings)->total;
 
@@ -71,9 +71,11 @@ class UserCheckInRepositoryEloquent extends Repository implements UserCheckInRep
 
         if ($startDate && $endDate) {
             $query .= " AND uci.created_at BETWEEN :start_date AND :end_date";
+            $bindings['start_date'] = $startDate;
+            $bindings['end_date'] = $endDate . ' 23:59:59';
         }
 
-        $query .= " LIMIT :per_page OFFSET :offset";
+        $query .= " ORDER BY uci.created_at DESC LIMIT :per_page OFFSET :offset";
         $bindings['per_page'] = $perPage;
         $bindings['offset'] = $offset;
 
@@ -89,5 +91,6 @@ class UserCheckInRepositoryEloquent extends Repository implements UserCheckInRep
             'total_pages' => $totalPages,
         ];
     }
+
 
 }

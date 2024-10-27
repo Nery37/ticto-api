@@ -31,21 +31,15 @@ class UserService extends AppService
         $this->repository = $repository;
     }
 
-    public function all(int $limit = 15, bool $paginate = true, string $sortBy = 'id', string $sortDir = 'asc'): mixed
+    public function all(int $limit = 15, bool $paginate = true, string $sortBy = 'id', string $sortDir = 'desc'): mixed
     {
         $queryBuilder = $this->repository
             ->resetCriteria()
             ->pushCriteria(app(RoleIsEmployeeCriteria::class))
-            ->pushCriteria(app(RequestCriteria::class));
+            ->pushCriteria(app(RequestCriteria::class))
+            ->orderBy($sortBy, 'desc');
 
-        if (!empty($sortBy) && in_array(strtolower($sortDir), ['asc', 'desc'])) {
-            $queryBuilder->orderBy($sortBy, $sortDir);
-        }
-
-        if ($paginate) {
-            return $queryBuilder->paginate($limit);
-        }
-        return $queryBuilder->all();
+        return $paginate ? $queryBuilder->paginate($limit) : $queryBuilder->take($limit)->get();
     }
 
     public function storeUser(array $data): array

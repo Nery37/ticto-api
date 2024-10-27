@@ -23,13 +23,25 @@ Para facilitar os testes e integração com a API, uma collection do Postman est
   
   ```
   make install
-```
+  ```
+
+## Credenciais de Acesso
+
+### Login do Gestor
+- **E-mail**: gestor1@example.com
+- **Senha**: password
+
+### Login do Funcionário
+- **E-mail**: funcionario1@example.com
+- **Senha**: password
+
+> **Observação**: O gestor pode acessar funcionalidades avançadas, como monitoramento dos registros de ponto dos subordinados, enquanto o funcionário visualiza e gerencia o próprio registro.
 
 ## Frontend do Projeto
 
 Este projeto possui um frontend separado desenvolvido em **Vue.js 2**. O repositório do frontend contém todas as interfaces e componentes necessários para consumir esta API.
 
-- **Repositório do Frontend**: [TICTO-FRONTEND](https://github.com/exemplo/frontend-vue2)
+- **Repositório do Frontend**: [TICTO-FRONTEND](https://github.com/Nery37/ticto-app)
 
 Certifique-se de seguir as instruções no repositório do frontend para configurá-lo e conectá-lo a esta API.
 
@@ -47,7 +59,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `password`   | string | Sim         | Senha do usuário.   |
 
 #### Exemplo de Resposta:
-```
+```json
 {
     "data": {
         "access_token": "jwt_token_aqui",
@@ -75,7 +87,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `new_password_confirmation` | string | Sim | Confirmação da nova senha.     |
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "message": "Senha alterada com sucesso."
 }
@@ -93,14 +105,20 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `Authorization` | Bearer {token}   |
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "data": [
     {
       "id": 1,
       "name": "João Silva",
       "email": "joao.silva@example.com",
-      "role": "Funcionário",
+      "role": {
+            "id": 2,
+            "name": "Administrador",
+            "created_at": "2024-10-27T14:11:52.000000Z",
+            "updated_at": "2024-10-27T14:11:52.000000Z",
+            "deleted_at": null
+      },
 	  "address": {
 		  "zip_code": "01001-000",
 		  "street": "Praça da Sé",
@@ -116,7 +134,13 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
       "id": 2,
       "name": "Maria Souza",
       "email": "maria.souza@example.com",
-      "role": "Funcionário",
+      "role": {
+            "id": 2,
+            "name": "Administrador",
+            "created_at": "2024-10-27T14:11:52.000000Z",
+            "updated_at": "2024-10-27T14:11:52.000000Z",
+            "deleted_at": null
+      },
 	  "address": {
 		  "zip_code": "01001-000",
 		  "street": "Praça da Sé",
@@ -170,8 +194,14 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
     "id": 1,
     "name": "João Silva",
     "email": "joao.silva@example.com",
-    "role": "Funcionário",
-	"age" => 34
+    "role": {
+            "id": 2,
+            "name": "Administrador",
+            "created_at": "2024-10-27T14:11:52.000000Z",
+            "updated_at": "2024-10-27T14:11:52.000000Z",
+            "deleted_at": null
+    },
+	"age" : 34
     "address": {
       "zip_code": "01001-000",
       "street": "Praça da Sé",
@@ -238,12 +268,19 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `state`        | string | Não         | Estado do endereço.     |
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "data": {
     "id": 1,
     "name": "João Silva",
     "email": "joao.silva@example.com",
+    "role": {
+            "id": 2,
+            "name": "Administrador",
+            "created_at": "2024-10-27T14:11:52.000000Z",
+            "updated_at": "2024-10-27T14:11:52.000000Z",
+            "deleted_at": null
+    },
     "address": {
       "zip_code": "01001-000",
       "street": "Praça da Sé",
@@ -275,13 +312,19 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `id`      | int  | Sim         | ID do usuário a ser exibido.|
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "data": {
     "id": 1,
     "name": "João Silva",
     "email": "joao.silva@example.com",
-    "role": "Funcionário",
+    "role": {
+            "id": 2,
+            "name": "Administrador",
+            "created_at": "2024-10-27T14:11:52.000000Z",
+            "updated_at": "2024-10-27T14:11:52.000000Z",
+            "deleted_at": null
+    },
     "birthdate": "1990-05-20",
     "document": "12345678900",
     "address": {
@@ -310,13 +353,19 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `Authorization` | Bearer {token}   |
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "data": {
     "id": 1,
     "name": "João Silva",
     "email": "joao.silva@example.com",
-    "role": "Funcionário",
+    "role": {
+            "id": 2,
+            "name": "Administrador",
+            "created_at": "2024-10-27T14:11:52.000000Z",
+            "updated_at": "2024-10-27T14:11:52.000000Z",
+            "deleted_at": null
+    },
     "birthdate": "1990-05-20",
     "document": "12345678900",
     "address": {
@@ -345,7 +394,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `Authorization` | Bearer {token}   |
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "data": {
     "check_in_id": 123,
@@ -379,7 +428,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `per_page`    | int    | Não         | Registros por página.        |
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "data": [
     {
@@ -409,7 +458,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `Authorization` | Bearer {token}   |
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "data": [
   	{
@@ -450,7 +499,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 | `zipCode`     | string | Sim         | CEP do endereço a ser buscado. |
 
 #### Exemplo de Resposta:
-```
+```json
 {
   "data": {
     "cep": "01001-000",
@@ -470,7 +519,7 @@ Certifique-se de seguir as instruções no repositório do frontend para configu
 - **Descrição:** Verifica o status da API para garantir que está funcionando corretamente.
 
 #### Exemplo de Resposta:
-```
+```json
 {
     "status": "health"
 }

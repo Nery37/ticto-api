@@ -1,4 +1,6 @@
-# API Documentation
+# Ticto Api
+
+> A Ticto API é uma solução desenvolvida para otimizar o controle de ponto e monitorar a frequência dos funcionários de forma prática e eficiente, facilitando a gestão e o acompanhamento do registro de horas trabalhadas.
 
 ## Recursos da API
 
